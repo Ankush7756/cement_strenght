@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PulseLedger | Business Tracking</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Business Tracking Suite</p>
+        <h1>PulseLedger Dashboard</h1>
+      </div>
+      <button id="exportBtn" class="btn">Export Snapshot</button>
+    </header>
+
+    <main class="layout">
+      <section class="card">
+        <h2>Core Metrics</h2>
+        <div class="metrics-grid" id="metricsGrid"></div>
+      </section>
+
+      <section class="card">
+        <h2>Add KPI Entry</h2>
+        <form id="entryForm" class="entry-form">
+          <label>
+            Metric Name
+            <input name="name" placeholder="Revenue" required />
+          </label>
+          <label>
+            Value
+            <input name="value" type="number" min="0" step="0.01" required />
+          </label>
+          <label>
+            Category
+            <select name="category" required>
+              <option value="Finance">Finance</option>
+              <option value="Sales">Sales</option>
+              <option value="Operations">Operations</option>
+              <option value="Marketing">Marketing</option>
+            </select>
+          </label>
+          <button type="submit" class="btn btn-primary">Track Metric</button>
+        </form>
+      </section>
+
+      <section class="card wide">
+        <div class="table-header">
+          <h2>Recent Activity</h2>
+          <input id="filterInput" placeholder="Filter by name or category" />
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Metric</th>
+              <th>Category</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody id="activityTable"></tbody>
+        </table>
+      </section>
+    </main>
+
+    <template id="metricTemplate">
+      <article class="metric">
+        <h3 class="metric-name"></h3>
+        <p class="metric-value"></p>
+        <p class="metric-change"></p>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
